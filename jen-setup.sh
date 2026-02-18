@@ -1,3 +1,4 @@
+# setup the jenkins server while using amazon linux os 
 #! /bin/bash
 sudo yum update –y
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -15,3 +16,20 @@ echo '/var/tmp_disk /tmp none bind 0 0' | sudo tee -a /etc/fstab
 sudo systemctl mask tmp.mount
 df -h /tmp
 sudo systemctl restart jenkins
+
+
+# setup the jenkins server while using ubuntu/debian os
+sudo apt update 
+sudo apt install openjdk-17-jdk
+java --version
+sudo apt update
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+# sudo systemctl status jenkins ----- to check the status of the jenkins
