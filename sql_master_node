@@ -1,4 +1,5 @@
-Connect both the servers
+# create 2 instances with same configuration and Connect both the servers
+#run on both
 
 sudo apt update
 sudo apt install mysql-server -y
@@ -6,23 +7,24 @@ sudo systemctl status mysql
 sudo systemctl enable mysql
 
 # Configure Master Server
-Open MySQL configuration.
+#Open MySQL configuration.
 
 sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 
-Find and modify these linesaccording to this.
+#####Find and modify these linesaccording to this.
 
 bind-address = 0.0.0.0
 server-id = 1
-log_bin = /var/log/mysql/mysql-bin.log
+log_bin = /var/log/mysql/mysql-bin.log  
 
-Save and exit 
+Save and exit  #####
+
 sudo systemctl restart mysql
 # Create Replication User on Master
-Login to MySQL:
+#Login to MySQL:
 sudo mysql
 
-Create replication user:
+#Create replication user:
 mysql>
 
 CREATE USER 'replica'@'%' IDENTIFIED BY 'password';
