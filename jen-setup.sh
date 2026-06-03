@@ -39,7 +39,7 @@ sudo systemctl status jenkins
 
 #---------- setup the jenkins server while using ubuntu/debian os------------------
 sudo apt update 
-sudo apt install openjdk-17-jdk
+sudo apt install openjdk-21-jdk
 java --version
 sudo apt update
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
